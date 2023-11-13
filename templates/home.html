@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Current blocklist</h2>
+    <ul class="list-group">
+    {% for line in lines %}
+        <li class="list-group-item">{{ line }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+
+#url {
+    width: 100%;
+    height: 330px;
+}
+
+.alert ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 11px;
+    margin-bottom: 0;
+}
+
+#fake_email {
+    display: none;
+}

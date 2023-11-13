@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if submissions %}
+    <form method="post">
+        <table class="table table-striped">
+         <thead>
+            <tr>
+                <th><input type="checkbox" name="select_all" id="select_all" onclick="selectAllCheckboxes(this);" /></th>
+                <th>Url</th>
+                <th>IP Address</th>
+                <th>Created</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for submission in submissions %}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkbox_{{ submission.id }}" value="checkbox_{{ submission.id }}" />
+                    </td>
+                    <td>
+                        <a href="http://{{ submission.url }}" target="_blank">{{ submission.url }}</a>
+                    </td>
+                    <td>
+                        {{ submission.ip_address }}
+                    </td>
+                    <td>
+                        {{ submission.created }}
+                    </td>
+                </tr>
+            {% endfor %}
+         </tbody>
+        </table>
+
+        <p><label for="commit_message">Commit message</label><br />
+        <input type="text" id="commit_message" name="commit_message" value="" /></p>
+        <input type="submit" name='operation' class="btn btn-primary" value="Approve" />
+        <input type="submit" name='operation' class="btn btn-outline-secondary" value="Delete" onclick="return confirm('Are you sure?');" />
+    </form>
+    {% else %}
+        <p>No submissions are waiting for approval.</p>
+    {% endif %}
+{% endblock %}
